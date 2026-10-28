@@ -1,0 +1,35 @@
+PC CENTER - FOTOS REALES DE INTERNET (ACTUALIZACION DE IMAGENES)
+===============================================================
+
+Esta actualización agrega fotografías ilustrativas de Wikimedia Commons
+al catálogo de Productos y al selector visual de Nuevo presupuesto.
+Las imágenes se eligen automáticamente según 38 productos de ejemplo,
+y según descripción/categoría en los productos creados por el usuario.
+
+ES IMPORTANTE:
+- NO son fotografías exactas de cada marca, capacidad ni SKU: representan
+  productos de la misma familia (SSD, RAM, monitores, routers, etc.).
+- Para ver fotografías se necesita conexión a Internet; de no cargarse,
+  el sitio usa sus dibujos SVG locales anteriores sin romper la página.
+- Se respeta la autoría y licencia. En el sitio hay enlace a Créditos de
+  imágenes con autor, licencia y ficha original de Wikimedia Commons.
+- No hace falta API key, crear una cuenta ni instalar nuevas librerías.
+- La aplicación envía al servidor de Commons la petición de cada imagen;
+  no uses fotografías privadas ni información personal en nombres de archivo.
+
+COMO INSTALAR SOBRE EL PROYECTO EXISTENTE:
+1. Guarda copia de seguridad de tu proyecto.
+2. Detén php artisan serve (Ctrl+C).
+3. Descomprime ACTUALIZACION_IMAGENES_PC_CENTER.zip y copia TODO el contenido
+   de la carpeta del proyecto sobre tu carpeta de PC Center, con reemplazo.
+   Conserva .env, vendor, y no toques la base de datos.
+4. Ejecuta .\ACTIVAR_IMAGENES_PC_CENTER.bat desde VS Code (PowerShell).
+5. Ejecuta php artisan serve, abre /productos y /presupuestos/nuevo.
+   Presiona Ctrl+F5 si el navegador dejó vistas antiguas en caché.
+6. /creditos-imagenes lista las licencias y los autores.
+
+NO ejecutar migrate:fresh, db:wipe, ni crear tablas desde phpMyAdmin.
+
+LIMITACION: El entorno de empaquetado no tiene acceso de descarga directa
+para guardar fotografías externas dentro del ZIP. El sistema utiliza
+fotografías remotas públicas y muestra los recursos locales si fallan.

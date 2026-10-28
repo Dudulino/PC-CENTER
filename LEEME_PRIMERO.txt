@@ -1,0 +1,15 @@
+PC CENTER - PROTOTIPO LARAVEL / MYSQL
+
+1. Abre la carpeta del proyecto en Visual Studio Code.
+2. Instala PHP 8.2+, MySQL y Composer.
+3. Crea una base de datos llamada pc_center en phpMyAdmin.
+4. Edita .env.example con los datos MySQL si es necesario.
+5. Ejecuta INSTALAR_EN_WINDOWS.bat (o los comandos del README.md).
+6. Visita http://127.0.0.1:8000.
+7. Usuario: admin@pccenter.test / Clave: Demo2026!
+
+Si todavía no tienes Composer o MySQL, abre VISTA_PREVIA/login.html
+para explorar las maquetas sin conexión. La vista previa no guarda datos.
+
+LEE README.md para la guía completa y los cinco puntos de captura
+que corresponden a las figuras 32 a 36 de la tesina.

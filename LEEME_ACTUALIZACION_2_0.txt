@@ -1,0 +1,37 @@
+PC CENTER 2.0 - MEJORAS PREPARADAS PARA TU PROYECTO EXISTENTE
+============================================================
+
+No debes volver a crear productos, clientes ni presupuestos manualmente.
+Esta actualización agrega 38 productos ficticios en total, 3 clientes
+adicionales y 3 presupuestos completos de ejemplo; si ya ejecutaste los
+datos iniciales, no duplica esos registros ni reemplaza tus precios editados.
+
+PASOS PARA TU PROYECTO YA FUNCIONANDO EN XAMPP
+1) Conserva tu .env y tu carpeta vendor. No borres la base pc_center.
+2) Detén el servidor Laravel con Ctrl+C en su terminal.
+3) Haz una copia de seguridad de tu proyecto y de la base MySQL.
+4) Copia encima de tu carpeta actual el contenido del ZIP de mejoras,
+   respetando la estructura de carpetas y aceptando reemplazar archivos.
+5) Inicia MySQL en XAMPP.
+6) Desde la carpeta principal del proyecto ejecuta:
+      .\ACTUALIZAR_PC_CENTER.bat
+   Ese script ejecuta migrate y db:seed SIN borrar tus tablas.
+7) Inicia el servidor:
+      php artisan serve
+8) Abre http://127.0.0.1:8000 y actualiza con Ctrl+F5.
+
+RUTAS
+- /productos             : inventario de referencia, tabla/tarjetas, filtros
+- /presupuestos/nuevo    : catálogo visual + escáner + carrito y totales
+- /presupuestos          : historial (incluye tres ejemplos ficticios)
+- /presupuestos/{id}     : emitir/descargar PDF con logo institucional
+
+NOTAS IMPORTANTES
+- Los precios, costos y existencias son ficticios: no son información real
+  de PC Center. El sistema no descuenta stock al presupuestar.
+- El PDF es un PRESUPUESTO COMERCIAL, NO es una boleta de venta SUNAT.
+- El escáner de cámara requiere HTTPS o localhost, permiso de cámara y
+  conexión a Internet para descargar ZXing; USB y búsqueda son alternativas.
+- NO ejecutes 'php artisan migrate:fresh', 'db:wipe' ni elimines la base.
+- Si se presenta un error: ejecuta 'php artisan optimize:clear', comprueba
+  .env y que MySQL sigue activo en XAMPP.

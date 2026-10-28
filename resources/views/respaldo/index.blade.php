@@ -1,0 +1,9 @@
+@extends('layouts.app')
+@section('title','Copias de seguridad')
+@section('breadcrumb','Administración / Respaldos')
+@section('content')
+<div class="page-head"><div><span class="eyebrow ink">ADMINISTRACIÓN</span><h1>Copias de seguridad</h1><p>Exportación y restauración local de datos estructurados del prototipo.</p></div></div>
+<div class="grid-main"><section class="panel padded"><div class="big-feature-icon">↓</div><h2>Descargar respaldo JSON</h2><p>Exporta las seis tablas del sistema: usuarios, clientes, productos, presupuestos, detalles e historial de estados.</p><p class="muted">El respaldo incluye hashes de contraseñas. Guárdalo únicamente en una ubicación privada.</p><a href="{{ route('respaldo.descargar') }}" class="btn primary">Descargar copia</a></section>
+<section class="panel padded"><div class="big-feature-icon warn">↺</div><h2>Restaurar un respaldo</h2><p class="muted">Solo administración. Esta acción reemplaza los datos actuales y cierra la sesión. Haz antes una descarga de seguridad.</p><form method="post" action="{{ route('respaldo.restaurar') }}" enctype="multipart/form-data" class="stackform" onsubmit="return confirm('ATENCIÓN: ¿Reemplazar toda la base de datos con este respaldo?')">@csrf<label>Archivo de respaldo<input name="archivo" type="file" accept=".json,application/json" required></label><label>Escribe RESTAURAR para confirmar<input name="confirmacion" type="text" required placeholder="RESTAURAR" pattern="RESTAURAR"></label><button class="btn danger-btn">Restaurar datos</button></form></section></div>
+<div class="help-block spaced"><b>Alcance académico</b><p>Este mecanismo facilita respaldos de demostración en un entorno local. Para producción se requieren procedimientos operativos de copias MySQL, cifrado, permisos, retención y restauraciones verificadas.</p></div>
+@endsection

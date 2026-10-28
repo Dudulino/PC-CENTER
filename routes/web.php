@@ -1,0 +1,40 @@
+<?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{AuthController,DashboardController,ProductoController,ClienteController,PresupuestoController,UsuarioController,RespaldoController};
+Route::get('/login',[AuthController::class,'form'])->name('login');
+Route::post('/login',[AuthController::class,'login'])->middleware('throttle:8,1')->name('login.post');
+Route::post('/logout',[AuthController::class,'logout'])->middleware('auth')->name('logout');
+Route::redirect('/','/panel');
+Route::middleware('auth')->group(function(){
+ Route::view('/creditos-imagenes','imagenes.creditos')->name('imagenes.creditos');
+ Route::get('/panel',[DashboardController::class,'index'])->name('panel');
+ Route::get('/productos',[ProductoController::class,'index'])->name('productos.index');
+ Route::get('/productos/buscar',[ProductoController::class,'buscar'])->name('productos.buscar');
+ Route::get('/productos/codigo',[ProductoController::class,'codigo'])->name('productos.codigo');
+ Route::middleware('role:administrador')->group(function(){
+   Route::post('/productos',[ProductoController::class,'store'])->name('productos.store');
+   Route::put('/productos/{producto}',[ProductoController::class,'update'])->name('productos.update');
+   Route::patch('/productos/{producto}/activo',[ProductoController::class,'alternarActivo'])->name('productos.activo');
+ });
+ Route::get('/clientes',[ClienteController::class,'index'])->name('clientes.index');
+ Route::post('/clientes',[ClienteController::class,'store'])->name('clientes.store');
+ Route::put('/clientes/{cliente}',[ClienteController::class,'update'])->name('clientes.update');
+ Route::get('/presupuestos',[PresupuestoController::class,'index'])->name('presupuestos.index');
+ Route::get('/presupuestos/nuevo',[PresupuestoController::class,'create'])->name('presupuestos.create');
+ Route::post('/presupuestos',[PresupuestoController::class,'store'])->name('presupuestos.store');
+ Route::get('/presupuestos/{presupuesto}',[PresupuestoController::class,'show'])->name('presupuestos.show');
+ Route::get('/presupuestos/{presupuesto}/editar',[PresupuestoController::class,'edit'])->name('presupuestos.edit');
+ Route::put('/presupuestos/{presupuesto}',[PresupuestoController::class,'update'])->name('presupuestos.update');
+ Route::post('/presupuestos/{presupuesto}/duplicar',[PresupuestoController::class,'duplicar'])->name('presupuestos.duplicar');
+ Route::post('/presupuestos/{presupuesto}/emitir',[PresupuestoController::class,'emitir'])->name('presupuestos.emitir');
+ Route::get('/presupuestos/{presupuesto}/pdf',[PresupuestoController::class,'pdf'])->name('presupuestos.pdf');
+ Route::middleware('role:administrador')->group(function(){
+   Route::post('/presupuestos/{presupuesto}/estado',[PresupuestoController::class,'estado'])->name('presupuestos.estado');
+   Route::get('/usuarios',[UsuarioController::class,'index'])->name('usuarios.index');
+   Route::post('/usuarios',[UsuarioController::class,'store'])->name('usuarios.store');
+   Route::put('/usuarios/{usuario}',[UsuarioController::class,'update'])->name('usuarios.update');
+   Route::get('/respaldo',[RespaldoController::class,'index'])->name('respaldo.index');
+   Route::get('/respaldo/descargar',[RespaldoController::class,'descargar'])->name('respaldo.descargar');
+   Route::post('/respaldo/restaurar',[RespaldoController::class,'restaurar'])->name('respaldo.restaurar');
+ });
+});

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 155" role="img"><defs>
+<linearGradient id="light" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ecf8ff"/><stop offset="1" stop-color="#d2eafb"/></linearGradient>
+<linearGradient id="dark" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#254b71"/><stop offset="1" stop-color="#0e2948"/></linearGradient>
+<linearGradient id="cyan" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#50d7ee"/><stop offset="1" stop-color="#097dc5"/></linearGradient>
+<filter id="s"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#557b9a" flood-opacity=".2"/></filter></defs><ellipse cx="109" cy="140" rx="75" ry="9" fill="#abc4d8" opacity=".24"/>
+<g transform="rotate(-14 110 78)" filter="url(#s)"><rect x="42" y="45" width="136" height="68" rx="10" fill="url(#dark)"/><rect x="50" y="53" width="120" height="51" rx="6" fill="#214f71"/><rect x="58" y="60" width="87" height="6" rx="3" fill="#41c9e9"/><text x="58" y="90" fill="white" font-family="Arial" font-size="18" font-weight="800">SSD</text><text x="108" y="90" fill="#b8e9fe" font-family="Arial" font-size="11">NVMe</text><circle cx="160" cy="88" r="3" fill="#48d1ed"/></g></svg>
